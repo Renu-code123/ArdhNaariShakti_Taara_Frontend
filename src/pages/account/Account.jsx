@@ -12,17 +12,35 @@ export const Account = () => {
   const [username, setUsername] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const [succ, setSucc] = useState(false)
+  const [succ, setSucc] = useState("")
+  const [errorMsg, setErrorMsg] = useState("")
+  const [isEditing, setIsEditing] = useState(false)
   const PublicFlo = "https://taara-backend.onrender.com/images/"
+
+  // Set initial values when entering edit mode
+  const handleEdit = () => {
+    setUsername(user.username || "")
+    setEmail(user.email || "")
+    setPassword("")
+    setIsEditing(true)
+    setSucc(false)
+  }
+
+  const handleCancel = () => {
+    setIsEditing(false)
+    setSucc(false)
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    setSucc("")
+    setErrorMsg("")
     dispatch({ type: "UPDATE_START" })
     const updateUser = {
       userId: user._id,
-      username,
-      email,
-      password,
+      username: username.trim() !== "" ? username : user.username,
+      email: email.trim() !== "" ? email : user.email,
+      password: password.trim() !== "" ? password : undefined,
     }
 
     if (file) {
@@ -40,13 +58,20 @@ export const Account = () => {
     }
     try {
       const res = await axios.put("https://taara-backend.onrender.com/users/" + user._id, updateUser)
-      setSucc(true)
+      setSucc("Profile updated successfully!")
+      setErrorMsg("")
       dispatch({ type: "UPDATE_SUCC", payload: res.data })
-      window.location.reload()
+      setTimeout(() => {
+        setIsEditing(false)
+        setSucc("")
+      }, 2000)
     } catch (error) {
       dispatch({ type: "UPDATE_FAILED" })
+      setErrorMsg("Failed to update profile.")
+      setSucc("")
     }
   }
+
   return (
     <>
       <section className='accountInfo'>
@@ -62,18 +87,96 @@ export const Account = () => {
                 {/* <input type='file' id='inputfile' style={{ display: "none" }}  /> */}
               </div>
             </div>
-            <form className='right' onSubmit={handleSubmit}>
-              <label htmlFor=''>Username</label>
-              <input type='text' placeholder={user.username} onChange={(e) => setUsername(e.target.value)} />
-              <label htmlFor=''>Email</label>
-              <input type='email' placeholder={user.email} onChange={(e) => setEmail(e.target.value)} />
-              <label htmlFor=''>Password</label>
-              <input type='password' onChange={(e) => setPassword(e.target.value)} />
-              <button className='button' type='submit'>
-                Update
-              </button>
-              {succ && <span>Profile is Updated</span>}
-            </form>
+            {!isEditing ? (
+              <div className='right'>
+                <div className='profile-info' style={{
+                  background: 'linear-gradient(135deg, #f5b8d9, #bdd9f9)',
+                  borderRadius: '8px',
+                  boxShadow: '0 4px 15px rgba(0, 0, 0, 0.1)',
+                  padding: '2.5rem 2rem',
+                  marginBottom: '2rem',
+                  minWidth: '320px',
+                  maxWidth: '400px',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'flex-start',
+                  gap: '1.5rem',
+                  border: '1px solid #e3e8ee',
+                }}>
+                  <div style={{ fontSize: '1.2rem', color: '#222', letterSpacing: '0.01em' }}>
+                    <span style={{ fontWeight: 600, marginRight: 8, color: '#f01b89' }}>Username:</span>
+                    <span style={{ color: '#0472f8', fontWeight: 500 }}>{user.username}</span>
+                  </div>
+                  <div style={{ fontSize: '1.2rem', color: '#222', letterSpacing: '0.01em' }}>
+                    <span style={{ fontWeight: 600, marginRight: 8, color: '#f01b89' }}>Email:</span>
+                    <span style={{ color: '#0472f8', fontWeight: 500 }}>{user.email}</span>
+                  </div>
+                </div>
+                <button
+                  className='button'
+                  onClick={handleEdit}
+                  type='button'
+                  style={{
+                    background: 'linear-gradient(90deg, #f01b89, #1e7df2)',
+                    color: '#fff',
+                    border: 'none',
+                    borderRadius: '4px',
+                    padding: '0.85rem 2.2rem',
+                    fontWeight: 700,
+                    fontSize: '1.08rem',
+                    cursor: 'pointer',
+                    marginTop: '0.7rem',
+                    boxShadow: '0 2px 8px rgba(37,99,235,0.08)',
+                    transition: 'background 0.2s',
+                  }}
+                >
+                  Edit Profile
+                </button>
+                {succ && (
+                  <div style={{ color: '#0472f8', marginTop: '1rem', fontWeight: 600, fontSize: '1rem' }}>{succ}</div>
+                )}
+                {errorMsg && (
+                  <div style={{ color: 'red', marginTop: '1rem', fontWeight: 600, fontSize: '1rem' }}>{errorMsg}</div>
+                )}
+              </div>
+            ) : (
+              <form className='right' onSubmit={handleSubmit}>
+                <label htmlFor='username'>Username</label>
+                <input
+                  id='username'
+                  type='text'
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  required
+                />
+                <label htmlFor='email'>Email</label>
+                <input
+                  id='email'
+                  type='email'
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                />
+                <label htmlFor='password'>Password</label>
+                <input
+                  id='password'
+                  type='password'
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder='Enter new password'
+                />
+                <div style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
+                  <button className='button' type='submit'>Save Changes</button>
+                  <button className='button' type='button' onClick={handleCancel}>Cancel</button>
+                </div>
+                {succ && (
+                  <div style={{ color: '#0472f8', marginTop: '1rem', fontWeight: 600, fontSize: '1rem' }}>{succ}</div>
+                )}
+                {errorMsg && (
+                  <div style={{ color: 'red', marginTop: '1rem', fontWeight: 600, fontSize: '1rem' }}>{errorMsg}</div>
+                )}
+              </form>
+            )}
           </div>
         </div>
       </section>
