@@ -26,7 +26,7 @@ import Feedback from "./pages/feedback/Feedback.jsx";
 import CalmingCorner from "./pages/music/CalmingCorner.jsx"
 import ForgotPassword from './pages/login/ForgotPassword';
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop.jsx";
-import Quiz from "./components/quiz/Quiz.jsx";
+import Quiz from "./pages/quiz/Quiz.jsx";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
