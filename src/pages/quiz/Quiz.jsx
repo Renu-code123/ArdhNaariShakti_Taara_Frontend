@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import quizData from "../../assets/data/quizData";
 import "./quiz.css";
+import Confetti from "react-confetti";
 
 const Quiz = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -25,8 +26,19 @@ const Quiz = () => {
     }, 1000);
   };
 
+  const retryQuiz = () => {
+    setCurrentQuestion(0);
+    setScore(0);
+    setShowResult(false);
+    setSelectedOption(null);
+  };
+
+  const feedbackMessage =
+    score > quizData.length / 2 ? "Great job!" : "Keep learning!";
+
   return (
     <div className="quiz-container">
+      {showResult && <Confetti />}
       <div className="quiz-header">
         <h1>Interactive Quiz</h1>
         <p>Test your knowledge about transgender rights and laws!</p>
@@ -34,10 +46,20 @@ const Quiz = () => {
       {showResult ? (
         <div className="quiz-result">
           <h2>Quiz Completed!</h2>
+          <p>{feedbackMessage}</p>
           <p>
             Your Score: {score} / {quizData.length}
           </p>
           <p>🎉 You earned {score} stars! 🎉</p>
+          <button className="retry-button" onClick={retryQuiz}>
+            Retry Quiz
+          </button>
+          <button
+            className="share-button"
+            onClick={() => alert("Share your score on social media!")}
+          >
+            Share Score
+          </button>
         </div>
       ) : (
         <div className="quiz-question">

@@ -72,11 +72,30 @@
 .quiz-result {
   font-size: 1.2rem;
   color: #212121;
+  text-align: center;
 }
 
 .quiz-result h2 {
   font-size: 2rem;
   color: rgb(18, 113, 255);
+}
+
+.retry-button, .share-button {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  background: linear-gradient(40deg, rgb(18, 113, 255), rgb(221, 74, 255));
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.retry-button:hover, .share-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
 }
 
 @keyframes fadeIn {
