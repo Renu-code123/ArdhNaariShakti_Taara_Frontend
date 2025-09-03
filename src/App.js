@@ -26,6 +26,7 @@ import Feedback from "./pages/feedback/Feedback.jsx";
 import CalmingCorner from "./pages/music/CalmingCorner.jsx"
 import ForgotPassword from './pages/login/ForgotPassword';
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop.jsx";
+import Quiz from "./components/quiz/Quiz.jsx";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
@@ -57,6 +58,7 @@ const App = () => {
           <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound/>}/>
           <Route path="/music" element={<CalmingCorner/>} />
+          <Route path="/quiz" element={<Quiz />} />
           <Route path="/feedback" element={<Feedback />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
         </Routes>
