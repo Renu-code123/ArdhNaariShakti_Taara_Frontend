@@ -39,6 +39,11 @@ export const nav = [
     text: "Calming Corner",
     url: "/music",
   },
+  {
+    id: 9,
+    text: "Quiz",
+    url: "/quiz",
+  },
 ];
 export const category = [
   {
