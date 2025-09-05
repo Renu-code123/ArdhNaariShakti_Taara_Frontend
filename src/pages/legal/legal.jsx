@@ -1,5 +1,7 @@
 import React from "react";
 import "./legal.css";
+import Accordion from "../../components/accordion/accordion";
+import "../../components/accordion/accordion.css"
 
 export const Legal = () => {
   return (
@@ -17,6 +19,7 @@ export const Legal = () => {
         </p>
       </div>
 
+      <Accordion title="1. Prohibition Against Discrimination"> 
       <div className="legal-section" id="Discrimination">
 <h1>THE TRANSGENDER PERSONS (PROTECTION OF RIGHTS) ACT, 2019
 ACT NO. 40 OF 2019
@@ -26,7 +29,6 @@ connected therewith and incidentalthereto.
 BE it enacted by Parliament in the Seventieth Year of the Republic of India as follows:—</p>
 <br>
 </br>
-  <h2>1. Prohibition Against Discrimination </h2>
   <br></br>
   <p>
     Under the law, <strong>no person or organization</strong> is allowed to discriminate against a transgender person. 
@@ -64,12 +66,11 @@ BE it enacted by Parliament in the Seventieth Year of the Republic of India as f
     This law ensures that transgender individuals are protected and treated equally in every part of life—just like everyone else.
   </p>
 </div>
- <br></br> <br></br>
+ </Accordion>
 
       {/* Section 2: Key Legal Milestones */}
+  <Accordion title="2. Recognition of Identity of Transgender Persons">
   <div className="legal-section" id="RECOGNITION" >
-  <h1>2. Recognition of Identity of Transgender Persons</h1>
-<br></br>
   <p>
     Every transgender person has the legal right to be recognized and respected for who they are. The law ensures this through a step-by-step process for identity recognition and documentation.
   </p>
@@ -135,10 +136,10 @@ BE it enacted by Parliament in the Seventieth Year of the Republic of India as f
     This legal recognition process ensures that every transgender person is treated with dignity and is able to live as per their true identity—on paper and in real life.
   </p>
 </div>
-<br></br> <br></br>
+</Accordion>
+
+<Accordion title="3. Welfare Measures by the Government">
 <div className="legal-section" id="welfare-measures">
-  <h1>3. Welfare Measures by the Government</h1>
-<br></br>
   <p>
     The law ensures that the government takes active steps to support the transgender community and promote their inclusion in society. Here’s what the government is required to do:
   </p>
@@ -165,10 +166,10 @@ BE it enacted by Parliament in the Seventieth Year of the Republic of India as f
     These measures are designed to ensure dignity, equality, and equal access to opportunities for every transgender individual.
   </p>
 </div>
-<br></br> <br></br>
+</Accordion>
+
+<Accordion title="4. Obligations of Establishments & Persons">
 <div className="legal-section" id="obligations-rights">
-  <h1>4. Obligations of Establishments & Persons</h1>
-<br></br>
   <h3> <b>-Non-Discrimination in Employment</b></h3>
   <p>
     No establishment shall discriminate against any transgender person in any aspect of employment, including:
@@ -197,9 +198,11 @@ BE it enacted by Parliament in the Seventieth Year of the Republic of India as f
     <li> 1. Appoint a <strong>complaint officer</strong></li>
     <li> 2. Address and resolve any grievances related to violation of transgender rights</li>
   </ul>
-<br></br> <br></br>
-  <h2>5. Right of Residence</h2>
-<br></br>
+  </div>
+  </Accordion>
+
+<Accordion title="5. Right of Residence">
+  <div className="legal-section" id="right-of-residence">
   <h3> <b>-Protection from Family Separation</b></h3>
   <ul>
     <li> A child cannot be separated from their family for being transgender, unless ordered by a court in their best interest.</li>
@@ -217,11 +220,10 @@ BE it enacted by Parliament in the Seventieth Year of the Republic of India as f
     If the parent or family cannot care for a transgender person, a court may order them to be placed in a rehabilitation centre for proper care and support.
   </p>
 </div>
-<br></br> <br></br>
+</Accordion>
 
+<Accordion title="6. National Council for Transgender Persons">
 <div className="legal-section" id="national-council">
-  <h1>6. National Council for Transgender Persons</h1>
-
   <h3><b>Section 16 - Constitution of the Council</b></h3>
   <br></br>
   <p>
@@ -283,11 +285,11 @@ BE it enacted by Parliament in the Seventieth Year of the Republic of India as f
     <li>(e) Perform other functions as assigned by the Central Government</li>
   </ul>
 </div>
- <br></br> <br></br>
+ </Accordion>
+
 {/* Section: Education, Social Security and Health */}
+      <Accordion title="7. Education, Social Security and Health of Transgender Persons">
       <div className="legal-section" id="health-edu">
-        <h1>7. Education, Social Security and Health of Transgender Persons</h1>
-<br></br>
         <p>
           <strong>Inclusive Education (Section 13): </strong>  
           Every school, college or university that is either funded or recognized by the Government must make sure transgender persons are given equal education opportunities. This includes allowing them to participate in sports, recreation, and other leisure activities without any discrimination.
@@ -328,10 +330,10 @@ BE it enacted by Parliament in the Seventieth Year of the Republic of India as f
           </li>
         </ul>
       </div>
-<br></br> <br></br>
+</Accordion>
+
+<Accordion title="8. Offences and Penalties">
 <div className="legal-section" id="penalty">
-  <h1>8. Offences and Penalties</h1>
-  <br></br>
   <p>
     The law strictly protects transgender individuals from harm, abuse, and discrimination. Anyone who violates these rights can face serious legal consequences. Under the Transgender Persons (Protection of Rights) Act, the following acts are considered offences:
   </p>
@@ -362,10 +364,10 @@ BE it enacted by Parliament in the Seventieth Year of the Republic of India as f
     Anyone found guilty of committing any of the above offences will be punished with imprisonment for a term not less than six months, which can be extended up to two years, and they may also have to pay a fine. These laws exist to ensure that transgender individuals can live with dignity, free from fear, and with full protection under the law.
   </p>
 </div>
-<br></br> <br></br>
+</Accordion>
+
+<Accordion title="Miscellaneous">
 <div className="legal-section" id="misc">
-  <h1> Miscellaneous</h1>
-  <br></br>
   <p> 
     The Central Government shall, from time to time and after due appropriation made by Parliament by law, credit such sums to the National Council as may be necessary for carrying out the purposes of this Act. The provisions of this Act are in addition to, and not in derogation of, any other law in force. No suit, prosecution, or other legal proceeding shall lie against the appropriate Government, any local authority, or any Government officer for anything done or intended to be done in good faith under this Act or any rules made under it.
     <br /><br />
@@ -377,13 +379,7 @@ BE it enacted by Parliament in the Seventieth Year of the Republic of India as f
     If any difficulty arises in giving effect to the provisions of this Act, the Central Government may, by order in the Official Gazette, make provisions not inconsistent with the Act to remove the difficulty—provided that no such order shall be made after two years from the commencement of the Act. Every such order shall be laid before both Houses of Parliament as soon as possible after it is made.
   </p>
 </div>
-
-
-
-
-
-
-      
+</Accordion>
     </div>
   );
 };
