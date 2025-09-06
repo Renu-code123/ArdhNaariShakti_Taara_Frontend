@@ -1,7 +1,13 @@
 import React from "react";
+import { useNavigate, Link } from 'react-router-dom';
 import "./help.css";
 
 export const Help = () => {
+  const navigate = useNavigate();
+  const handleClick = (path) => {
+    navigate(path);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
   return (
     <div className="help-page">
       <div className="container">
@@ -26,7 +32,7 @@ export const Help = () => {
 
           <div className="faq-item">
             <h3>How can I contact someone for support?</h3>
-            <p>Visit the <a href="/contact">Contact</a> page to reach out directly through our form or find official contact details.</p>
+            <p>Visit the <a><Link to="/contact">Contact</Link></a> page to reach out directly through our form or find official contact details.</p>
           </div>
 
           <div className="faq-item">
@@ -36,7 +42,7 @@ export const Help = () => {
 
           <div className="faq-item important">
             <h3>Is my personal information safe?</h3>
-            <p>Absolutely. We value your privacy and do not share your data without consent. See our <a href="/privacy">Privacy Policy</a>.</p>
+            <p>Absolutely. We value your privacy and do not share your data without consent. See our <a><Link to="/privacy">Privacy Policy</Link></a>.</p>
           </div>
         </div>
 
@@ -46,7 +52,7 @@ export const Help = () => {
             If your question wasn't answered above, feel free to reach out. We aim to respond within 24–48 hours.
           </p>
           <p className="cta">
-            👉 Visit the <a href="/contact">Contact Page</a> to send us your query.
+            👉 Visit the <a><Link to="/contact">Contact Page</Link></a> to send us your query.
           </p>
         </div>
       </div>
