@@ -81,6 +81,15 @@ export const Header = () => {
     setMenuOpen(false); // Ensure main menu is closed when opening profile drawer
   };
 
+   // Add FAQ link to nav array 
+  const navWithFAQ = nav.some(link => link.text.toLowerCase() === "faq")
+    ? nav
+    : [
+        ...nav,
+        { id: 999, text: "FAQ", url: "/faq" }
+      ];
+
+
   return (
     <header className="header">
       <div className="scontainer flex space-between">
