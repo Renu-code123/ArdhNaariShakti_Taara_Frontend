@@ -29,6 +29,21 @@ import ScrollToTop from "./components/ScrollToTop/ScrollToTop.jsx";
 import Quiz from "./pages/quiz/Quiz.jsx";
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import FAQ from "./pages/faq/FAQ";
+
+const navStyle = {
+  padding: "1em",
+  background: "#f7f7f7",
+  borderBottom: "1px solid #ddd",
+  fontFamily: "'Segoe UI', Arial, sans-serif"
+};
+const linkStyle = {
+  marginRight: "1em",
+  color: "#b14e7c",
+  textDecoration: "none",
+  fontWeight: 500,
+  transition: "color 0.2s"
+};
 
 const App = () => {
   //after login
